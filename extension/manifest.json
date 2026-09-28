@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "やさしいTL (jev)",
+  "version": "0.2.1",
+  "description": "X のタイムラインで、注目集めのための攻撃的な投稿を jev で判定してたたむ。",
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.typesafe.ai/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": ["categories.js", "settings.js", "ui.js", "content.js"],
+      "css": ["ui.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "action": { "default_title": "やさしいTL の設定" }
+}
